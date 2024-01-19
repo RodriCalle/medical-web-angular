@@ -1,0 +1,13 @@
+.form-container {
+  display: flex;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}

@@ -1,0 +1,19 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="over" [opened]="isOpen" disableClose="true">
+    <mat-nav-list>
+      @for (option of loadOptions(); track $index) {
+      <mat-list-item [routerLink]="[option.path]" routerLinkActive="active" (click)="closeSidenav()">
+        <a matListItemTitle>
+          {{option.name}}
+        </a>
+        <button mat-icon-button matListItemMeta disabled>
+          <mat-icon>{{option.icon}}</mat-icon>
+        </button>
+      </mat-list-item>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

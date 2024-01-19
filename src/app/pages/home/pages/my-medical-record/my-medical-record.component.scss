@@ -1,0 +1,41 @@
+.data-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.appointments-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 20px;
+
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+}
+
+.data-appointment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  row-gap: 10px;
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    row-gap: 0px;
+  }
+}

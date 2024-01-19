@@ -1,0 +1,72 @@
+<div class="column align-center p-20">
+
+  <h2>My Profile</h2>
+
+  <form [formGroup]="doctorForm" (ngSubmit)="updateDoctor()">
+    <div class="form-container gap-20">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [formControl]="doctorForm.controls.name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Lastname</mat-label>
+        <input matInput [formControl]="doctorForm.controls.lastname" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput [formControl]="doctorForm.controls.address" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput [formControl]="doctorForm.controls.phone" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="doctorForm.controls.email" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Document Type</mat-label>
+        <mat-select [formControl]="doctorForm.controls.documentType">
+          <mat-option value="DNI">DNI</mat-option>
+          <mat-option value="CE">CE</mat-option>
+          <mat-option value="PASSPORT">PASSPORT</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Document Number</mat-label>
+        <input matInput [formControl]="doctorForm.controls.documentNumber" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Speciality</mat-label>
+        <mat-select [formControl]="doctorForm.controls.specialityId">
+          @for (speciality of specialities; track speciality.id) {
+          <mat-option [value]="speciality.id">{{speciality.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <p>Completa los siguientes campos <b>solo</b> si deseas cambiar la contraseña</p>
+    <div class="form-container gap-20">
+      <mat-form-field>
+        <mat-label>Last Password</mat-label>
+        <input type="password" matInput [formControl]="doctorForm.controls.lastPassword" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>New Password</mat-label>
+        <input type="password" matInput [formControl]="doctorForm.controls.password" autocomplete="off"
+          [required]="doctorForm.controls.lastPassword.value != ''">
+      </mat-form-field>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="doctorForm.invalid">Guardar</button>
+  </form>
+</div>

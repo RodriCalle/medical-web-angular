@@ -1,0 +1,40 @@
+<div class="column  p-30">
+
+  <h2>New Appointment</h2>
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="newAppointment()">
+    <div class="form-container gap-20">
+
+      <mat-form-field>
+        <mat-label>Speciality</mat-label>
+        <mat-select [formControl]="appointmentForm.controls.specialityId">
+          @for (speciality of specialities; track speciality.id) {
+          <mat-option [value]="speciality.id">{{speciality.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Doctor</mat-label>
+        <mat-select [formControl]="appointmentForm.controls.doctorId">
+          @for (doctor of doctors; track doctor.id) {
+          <mat-option [value]="doctor.id">{{doctor.user.name + ' - ' + doctor.user.lastname}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput type="datetime-local" [formControl]="appointmentForm.controls.date">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput type="number" [formControl]="appointmentForm.controls.price">
+      </mat-form-field>
+
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="appointmentForm.invalid">Guardar</button>
+  </form>
+</div>

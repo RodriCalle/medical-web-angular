@@ -1,0 +1,12 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav, mat-sidenav-list {
+  height: 100%;
+}
+
+.mat-sidenav {
+  width: 280px;
+}
+
+mat-list-item.active {
+  background-color: gray;
+  color: white;
+}

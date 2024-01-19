@@ -1,0 +1,81 @@
+<app-loading [isLoading]="loading()"></app-loading>
+
+@if (!loading()) {
+
+<div class="column p-30">
+
+  <h2>My Medical Record</h2>
+
+  <section class="data-container">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [value]="patient?.user?.name" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Lastname</mat-label>
+      <input matInput [value]="patient?.user?.lastname" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input matInput [value]="patient?.user?.phone" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [value]="patient?.user?.email" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput [value]="patient?.user?.address" readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Document</mat-label>
+      <input matInput [value]="patient?.user?.documentType + ' - ' + patient?.user?.documentNumber" readonly>
+    </mat-form-field>
+  </section>
+
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+
+  <section>
+    <h3>{{patient?.medicalRecord?.description}}</h3>
+
+    <h4>Appointments</h4>
+
+    <div class="appointments-container">
+      @for (appointment of appointments$ | async; track $index) {
+
+      <div class="column row-gap-20">
+        <div class="data-appointment-container">
+          <div class="appointment_title"><b>Appointment #{{appointment.id}}</b></div>
+          <div class="appointment_price">Price: {{appointment.price | currency: 'PEN'}}</div>
+          <div class="appointment_date">Date: {{appointment.date | date:'short'}}</div>
+          <div class="appointment_status">Status: {{appointment.status}}</div>
+
+          <div class="appointment_doctor">Doctor: {{appointment.doctor.user.name + ' ' +
+            appointment.doctor.user.lastname}}</div>
+          <div class="appointment_speciality">Speciality: {{appointment.speciality.name }}</div>
+        </div>
+
+        <div class="data-appointment-detail-container">
+          <div class="appointment_detail_title"><b>Detail</b></div>
+          <div class="appointment_price">Diagnosis: {{appointment.detail.diagnosis | null }}</div>
+          <div class="appointment_date">Description: {{appointment.detail.description | null }}</div>
+          <div class="appointment_status">Treatment: {{appointment.detail.treatment | null }}</div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[3, 6, 9]" showFirstLastButtons aria-label="Select page of list">
+    </mat-paginator>
+
+  </section>
+
+</div>
+}

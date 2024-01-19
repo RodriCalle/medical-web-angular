@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <button (click)="toogleSidenav()" mat-icon-button class="example-icon"
+    aria-label="Example icon-button with menu icon">
+    <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+  <span>Medical System</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="menu-icon" aria-label="Menu action" [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item disabled>
+      {{user.email}}
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item class="logout-icon" aria-label="Logout action" (click)="logout()">
+      <span>Logout</span>
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-menu>
+</mat-toolbar>
